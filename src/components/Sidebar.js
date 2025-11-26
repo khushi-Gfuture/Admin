@@ -15,7 +15,6 @@ const Sidebar = ({ user }) => {
     <aside className="sidebar">
       <div className="sidebar-logo">
         <div className="logo-icon">📊</div>
-        <div className="logo-text">Admin</div>
       </div>
 
       <nav className="sidebar-menu">
