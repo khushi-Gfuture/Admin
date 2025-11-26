@@ -9,8 +9,9 @@ const Admin = () => {
 
   const handleLogout = () => {
     logout();
-    // keep simple UX: show confirmation
     alert('Logged out successfully!');
+    // Redirect to login page
+    window.location.href = '/login';
   };
 
   return (
