@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
 import './Admin.css';
+import useUser from '../hooks/useUser';
 
 const Admin = () => {
-  const [user, setUser] = useState({
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-  });
+  const { user, logout } = useUser();
 
   const handleLogout = () => {
+    logout();
+    // keep simple UX: show confirmation
     alert('Logged out successfully!');
-    // Add actual logout logic here
   };
 
   return (
@@ -21,7 +20,6 @@ const Admin = () => {
         <Sidebar user={user} />
         <div className="admin-content">
           <h1>Welcome to Admin Dashboard</h1>
-          <p>Select an option from the sidebar to get started.</p>
         </div>
       </div>
     </div>
