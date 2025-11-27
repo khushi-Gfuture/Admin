@@ -1,14 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './Users.css';
 
 const Users = () => {
-  const [users] = useState([
-    { id: 1, name: 'John', email: 'john@gmail.com', phone: '111111111', role: 'Accountant' },
-    { id: 2, name: 'samm', email: 'samm@gmail.com', phone: '675645678', role: 'Manager' },
-    { id: 3, name: 'martin', email: 'martin@gmail.com', phone: '444444444', role: 'Developer'},
-    { id: 4, name: 'charles', email: 'charles@gmail.com', phone: '893789376', role: 'Manager' },
-    { id: 5, name: 'witson', email: 'witson@gmail.com', phone: '999900000', role: 'QA',  },
-  ]);
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  const fetchUsers = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+      setUsers(response.data);
+      setError(null);
+    } catch (err) {
+      setError('Failed to fetch users');
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) return <div className="users-container"><p>Loading users...</p></div>;
+  if (error) return <div className="users-container"><p>{error}</p></div>;
 
   return (
     <div className="users-container">
@@ -20,7 +38,7 @@ const Users = () => {
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
-            <th>Role</th>
+            <th>Username</th>
           </tr>
         </thead>
         <tbody>
@@ -30,7 +48,7 @@ const Users = () => {
               <td>{user.name}</td>
               <td>{user.email}</td>
               <td>{user.phone}</td>
-              <td>{user.role}</td>
+              <td>{user.username}</td>
             </tr>
           ))}
         </tbody>
