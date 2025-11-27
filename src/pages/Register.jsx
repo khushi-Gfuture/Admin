@@ -5,13 +5,14 @@ function Register() {
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [address, setAddress] = useState('')
   const [city, setCity] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (!name || !phone || !email || !address || !city) {
+    if (!name || !phone || !email || !password || !address || !city) {
       alert('All Fields are Required')
       return
     }
@@ -27,7 +28,8 @@ function Register() {
     }
     localStorage.setItem('user', JSON.stringify(userData))
     localStorage.setItem('Email', email)
-    localStorage.setItem('password', 'defaultPassword123!')
+    // Save the password entered by the user for login validation
+    localStorage.setItem('password', password)
 
     alert('Registration Successful!')
     // Redirect to login page
@@ -75,6 +77,18 @@ function Register() {
               placeholder="name@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              className="form-input"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Create a password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="form-input"
             />
           </div>
