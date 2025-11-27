@@ -1,0 +1,26 @@
+.Transactions-container {
+    padding: 5rem;
+}
+
+.Transactions-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.Transactions-table th {
+    background-color: rgb(174, 211, 234);
+    color: black;
+    padding: 1.2rem;
+    text-align: center;
+}
+
+.Transactions-table td {
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid #d6cdcd;
+    text-align: center;
+}
+
+.Transactions-table tbody tr {
+    line-height: 1;
+}
