@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = ({ user, onLogout }) => {
@@ -10,9 +11,9 @@ const Navbar = ({ user, onLogout }) => {
           <div className="user-profile">
             <span className="user-name">{user?.name || 'User'}</span>
           </div>
-          <button className="profile-btn" title="Profile">
+          <Link to="/admin/profile" className="profile-btn" title="Profile">
             👤 Profile
-          </button>
+          </Link>
           <button className="logout-btn" onClick={onLogout}>
             🚪 Logout
           </button>

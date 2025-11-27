@@ -13,10 +13,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/*" element={<Admin />} />
         <Route path="/" element={<div>Home Page</div>} />
-         <Route path="/Login" element={<Login />} />
-          <Route path="/Register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </Router>
   );

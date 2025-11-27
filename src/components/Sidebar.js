@@ -1,14 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Sidebar.css';
 
 const Sidebar = ({ user }) => {
   const menuItems = [
-    { id: 1, label: 'Home', icon: '🏠', href: '#home' },
-    { id: 2, label: 'Orders', icon: '📦', href: '#orders' },
-    { id: 3, label: 'Transaction', icon: '💳', href: '#transaction' },
-    { id: 4, label: 'Categories', icon: '📂', href: '#categories' },
-    { id: 5, label: 'Users', icon: '👥', href: '#users' },
-    { id: 6, label: 'Customers', icon: '🛍️', href: '#customers' },
+    { id: 1, label: 'Home', icon: '🏠', to: '/admin/home' },
+    { id: 2, label: 'Orders', icon: '📦', to: '/admin/orders' },
+    { id: 3, label: 'Transaction', icon: '💳', to: '/admin/transactions' },
+    { id: 4, label: 'Categories', icon: '📂', to: '/admin/categories' },
+    { id: 5, label: 'Users', icon: '👥', to: '/admin/users' },
+    { id: 6, label: 'Customers', icon: '🛍️', to: '/admin/customers' },
   ];
 
   return (
@@ -19,10 +20,10 @@ const Sidebar = ({ user }) => {
 
       <nav className="sidebar-menu">
         {menuItems.map((item) => (
-          <a key={item.id} href={item.href} className="menu-item">
+          <Link key={item.id} to={item.to} className="menu-item">
             <span className="menu-icon">{item.icon}</span>
             <span className="menu-label">{item.label}</span>
-          </a>
+          </Link>
         ))}
       </nav>
 
